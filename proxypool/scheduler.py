@@ -1,5 +1,6 @@
 import time
 from multiprocessing import Process
+
 from proxypool.api import app
 from proxypool.getter import Getter
 from proxypool.tester import Tester
@@ -7,8 +8,10 @@ from proxypool.db import RedisClient
 from proxypool.setting import *
 
 
-class Scheduler():
-    def schedule_tester(self, cycle=TESTER_CYCLE):
+class Scheduler:
+
+    @staticmethod
+    def schedule_tester(cycle=TESTER_CYCLE):
         """
         定时测试代理
         """
@@ -17,8 +20,9 @@ class Scheduler():
             print('测试器开始运行')
             tester.run()
             time.sleep(cycle)
-    
-    def schedule_getter(self, cycle=GETTER_CYCLE):
+
+    @staticmethod
+    def schedule_getter(cycle=GETTER_CYCLE):
         """
         定时获取代理
         """
@@ -27,8 +31,9 @@ class Scheduler():
             print('开始抓取代理')
             getter.run()
             time.sleep(cycle)
-    
-    def schedule_api(self):
+
+    @staticmethod
+    def schedule_api():
         """
         开启API
         """

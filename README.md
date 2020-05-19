@@ -50,3 +50,9 @@ def get_proxy():
     except ConnectionError:
         return None
 ```
+
+### 单独测试代理可用性:
+```
+python server.py -s proxy_pool_us_3
+python server.py -s proxy_pool_us_2
+```
